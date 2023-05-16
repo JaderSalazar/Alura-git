@@ -10,65 +10,61 @@
     <canvas width="700" height="500"> </canvas>
 
     <script>
-            var screen = document.querySelector('canvas');
-            var brush = screen.getContext('2d');
-            brush.fillStyle = 'ligthgrey';
-      <<<<<<< Updated upstream
-            brush.fillRect(0, 0, 600, 500);
-      =======
-            brush.fillRect(0, 0, 700, 500);
-      >>>>>>> Stashed changes
+      var screen = document.querySelector('canvas');
+      var brush = screen.getContext('2d');
+      brush.fillStyle = 'ligthgrey';
+      brush.fillRect(0, 0, 700, 500);
 
-            function designCircumference(x, y, radio, color) {
-              brush.fillStyle = color;
-              brush.beginPath();
-              brush.arc(x, y, radio, 0, 2 * Math.PI);
-              brush.fill();
-            }
+      function designCircumference(x, y, radio, color) {
+        brush.fillStyle = color;
+        brush.beginPath();
+        brush.arc(x, y, radio, 0, 2 * Math.PI);
+        brush.fill();
+      }
 
-            function clearScreen() {
-              brush.clearRect(0, 0, 600, 400);
-            }
+      function clearScreen() {
+        brush.clearRect(0, 0, 600, 400);
+      }
 
-            var x = 0;
-            var radio = 10;
-            var xRandom;
-            var yRandom;
-            function designObjective(x, y) {
-              designCircumference(x, y, radio + 20, 'red');
-              designCircumference(x, y, radio + 10, 'white');
-              designCircumference(x, y, radio, 'red');
-            }
+      var x = 0;
+      var radio = 10;
+      var xRandom;
+      var yRandom;
+      function designObjective(x, y) {
+        designCircumference(x, y, radio + 20, 'red');
+        designCircumference(x, y, radio + 10, 'white');
+        designCircumference(x, y, radio, 'red');
+      }
 
-            function rafflePosition(maximum) {
-              return Math.floor(Math.random() * maximum);
-            }
+      function rafflePosition(maximum) {
+        return Math.floor(Math.random() * maximum);
+      }
 
-            function updateScreen() {
-              clearScreen();
-              xRandom = rafflePosition(600);
-              yRandom = rafflePosition(400);
-              designObjective(xRandom, yRandom);
-              x++;
-            }
+      function updateScreen() {
+        clearScreen();
+        xRandom = rafflePosition(600);
+        yRandom = rafflePosition(400);
+        designObjective(xRandom, yRandom);
+        x++;
+      }
 
-            setInterval(updateScreen, 1000);
+      setInterval(updateScreen, 1000);
 
-            function shot(event) {
-              var x = event.pageX - screen.offsetLeft;
-              var y = event.pageY - screen.offsetTop;
+      function shot(event) {
+        var x = event.pageX - screen.offsetLeft;
+        var y = event.pageY - screen.offsetTop;
 
-              if (
-                x < xRandom + radio &&
-                x > xRandom - radio &&
-                y < yRandom + radio &&
-                y > yRandom - radio
-              ) {
-                alert('Accurate Shot ');
-              }
-            }
+        if (
+          x < xRandom + radio &&
+          x > xRandom - radio &&
+          y < yRandom + radio &&
+          y > yRandom - radio
+        ) {
+          alert('Accurate Shot ');
+        }
+      }
 
-            screen.onclick = shot;
+      screen.onclick = shot;
     </script>
   </body>
 </html>
